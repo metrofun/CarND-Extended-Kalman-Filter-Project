@@ -25,8 +25,15 @@ class Tools {
   /**
    * A helper method to calculate Jacobians.
    */
-  Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd& x_state);
+  static Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd& x_state);
 
+  /**
+   * A helper method to map the predicted state x' into the measurement space z.
+   */
+  static Eigen::VectorXd CalculateRadarSpace(const Eigen::VectorXd& x_state);
+  private:
+    static bool IsZero(float value);
+    static const float ZERO_EPS;
 };
 
 #endif  // TOOLS_H_
